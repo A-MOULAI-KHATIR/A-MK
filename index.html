@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #444;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .menu-container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: normal;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            font-size: 16px;
+            margin-bottom: 40px;
+            color: #111;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #000;
+            margin-bottom: 20px;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        nav ul li.active {
+            background-color: #666;#e3170d;
+            color: #fff;
+        }
+        
+        nav ul li {
+    		margin-right: 20px;
+    		padding: 10px 20px;
+    		font-size: 18px;
+    		cursor: pointer;
+		}
+		
+		nav ul li a {
+    		text-decoration: none;
+    		color: inherit; /* Inherits the color from the parent element */
+    		display: block;
+		}
+		
+		nav ul li.active a {
+    		background-color: #666; /* The active background color */
+    		color: #fff; /* The active text color */
+		}
+		
+
+        footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .footer-text span {
+            font-size: 14px;
+            color: #999;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <header>
+            <h1>Dr. Anes MOULAI-KHATIR</h1>
+        </header>
+        <nav>
+    		<ul>
+        		<li class="active"><a href="index.html">Home</a></li>
+        		<li><a href="New2.html">Research</a></li>
+        		<li><a href="teaching.html">Teaching</a></li>
+        		<li><a href="coding.html">Coding</a></li>
+        		<li><a href="office_hours.html">Office Hours</a></li>
+    		</ul>
+		</nav>
+        <div class="info">
+            <p><br>Dr. Mathematics and Applications<br>Department of Industrial Engineering<br>Institute Of Maintenance and Industrial Safety<br>Oran 2 Mohamed BEN AHMED University</p>
+        </div>
+        <footer>
+            <div class="footer-text">
+                <span>●●● Professional Email: moulaikhatir.anes@univ-oran2.dz ●●●</span>
+                <span> </span>
+                <span> </span>
+                <span>●●● Email: anes.mkh@gmail.com ●●●</span>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.querySelectorAll('nav ul li').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('nav ul li.active').classList.remove('active');
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
