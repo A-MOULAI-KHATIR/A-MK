@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Code Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .panel-left, .panel-right {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 10px;
+            min-width: 300px;
+        }
+        .panel-left pre {
+            background-color: #e8e8e8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .panel-left h2, .panel-right h2 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        .panel-right iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .home-button {
+            background-color: #111;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #009;
+        }
+        
+        
+        .line-1 {
+            height: 5px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="panel">
+            <div class="panel-left">
+                <h2>Text/Code</h2>
+                <p>This is some sample text or code that you want to display.</p>
+                <pre>
+                    <code>
+                        \documentclass{standalone}
+\usepackage{filecontents}
+\usepackage{float}
+\usepackage{pgffor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+% Define the Lotka-Volterra equations in the preamble
+\newcommand{\fx}[2]{\alpha*#1 - \beta*#1*#2} % Prey equation: dx/dt = \alpha*x - \beta*x*y
+\newcommand{\fy}[2]{\delta*#1*#2 - \gamma*#2} % Predator equation: dy/dt = \delta*x*y - \gamma*y
+
+\newwrite\datfile
+
+\AtBeginDocument{%
+    % Parameters for the Lotka-Volterra model
+    \def\alpha{0.1} % Prey birth rate
+    \def\beta{0.02} % Predation rate
+    \def\gamma{0.1} % Predator death rate
+    \def\delta{0.01} % Predator reproduction rate
+    
+    % Initial conditions
+    \def\xinitial{40} % Initial prey population
+    \def\yinitial{9} % Initial predator population
+    \def\h{0.1} % Step size
+    \def\nsteps{5000} % Number of steps
+    
+    % Open the data.dat file for appending
+    \immediate\openout\datfile=dataLV.dat
+    
+    % Write the initial values
+    \def\x{\xinitial}
+    \def\y{\yinitial}
+    \immediate\write\datfile{0\space \x\space \y} % Write time, initial x, initial y
+    
+    % Perform Euler's method and store the values
+    \foreach \i in {1, 2, ..., \nsteps} {%
+        \pgfmathsetmacro{\xnext}{\x + \h * (\fx{\x}{\y})}
+        \pgfmathsetmacro{\ynext}{\y + \h * (\fy{\x}{\y})}
+        \pgfmathsetmacro{\t}{\i * \h}
+        \immediate\write\datfile{\t\space \xnext\space \ynext}
+        \xdef\x{\xnext}
+        \xdef\y{\ynext}
+    }
+    
+    % Close the data.dat file
+    \immediate\closeout\datfile
+}
+
+\begin{document}
+    
+    % Plotting the prey and predator populations over time
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Lotka-Volterra Model: Prey and Predator Populations over Time},
+                xlabel={Time ($t$)},
+                ylabel={Population},
+                grid=both,
+                width=12cm,
+                height=8cm,
+                legend pos=north east
+                ]
+                \addplot table [x index=0, y index=1, col sep=space] {dataLV.dat};
+                \addplot table [x index=0, y index=2, col sep=space] {dataLV.dat};
+                \legend{Prey ($x$), Predator ($y$)}
+            \end{axis}
+        \end{tikzpicture}
+    
+\end{document}
+                    </code>
+                </pre>
+            </div>
+            <div class="panel-right">
+                <h2>Result</h2>
+                <iframe src="https://drive.google.com/file/d/1PmVjjWfJZpDSre99Ik_EXD6l_BHJxYeG/preview" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+        <div class="line-1"></div>
+        <div class="button-container">
+            <a href="../index.html" class="home-button">Back to Home</a>
+        </div>
+        <footer>
+            &copy; 2024. All rights reserved.
+        </footer>
+</body>
+</html>
