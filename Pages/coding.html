@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Code Display</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +15,7 @@
             margin: 0;
             padding: 20px;
         }
+
         .content-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -20,39 +24,63 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .panel {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin-bottom: 20px;
         }
-        .panel-left, .panel-right {
+
+        .panel-left{
+            word-wrap: break-word;
             background-color: #f8f8f8;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             flex: 1;
             margin: 10px;
-            min-width: 300px;
         }
+
+        .panel-right {
+            word-wrap: break-word;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 10px;
+        }
+
         .panel-left pre {
             background-color: #e8e8e8;
             padding: 15px;
             border-radius: 5px;
             overflow-x: auto;
         }
-        .panel-left h2, .panel-right h2 {
+
+        .panel-left h2,
+        .panel-right h2 {
             margin-top: 0;
             color: #0066cc;
         }
-        .panel-right iframe {
-            width: 100%;
+
+        .panel-left iframe {
+            width: 70%;
             height: 360px;
             border: none;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .panel-right iframe {
+            width: 70%;
+            height: 360px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         .button-container {
             margin-top: 30px;
             text-align: center;
@@ -72,23 +100,87 @@
         .home-button:hover {
             background-color: #009;
         }
-        
-        
+
+
         .line-1 {
             height: 5px;
             background: black;
         }
+
+        .line-2 {
+            height: 2px;
+            background: gray;
+        }
     </style>
 </head>
+
 <body>
-    <div class="content-container">
+    <h2 align="center">LaTeX</h2>
+        <div class="line-2"></div>
         <div class="panel">
             <div class="panel-left">
-                <h2>Text/Code</h2>
-                <p>This is some sample text or code that you want to display.</p>
+                <div class="content">
+                    <h2>Simulating the Lotka-Volterra Predator-Prey Model with LaTeX</h2>
+                    <p>
+                        The Lotka-Volterra model is a fundamental concept in mathematical biology, describing the
+                        interaction between predator and prey populations. This model uses two differential equations to
+                        represent how the populations evolve over time.
+                    </p>
+
+                    <h3>The Model</h3>
+                    <p>The equations governing the dynamics are:</p>
+                    <p><strong>Prey population (x):</strong></p>
+                    <p>
+                        \[
+                        \frac{dx}{dt} = \alpha x - \beta xy
+                        \]
+                        where \(\alpha\) is the prey birth rate, and \(\beta\) is the predation rate.
+                    </p>
+                    <p><strong>Predator population (y):</strong></p>
+                    <p>
+                        \[
+                        \frac{dy}{dt} = \delta xy - \gamma y
+                        \]
+                        where \(\delta\) is the predator reproduction rate, and \(\gamma\) is the predator death rate.
+                    </p>
+
+                    <h3>Numerical Method: Euler's Method</h3>
+                    <p>
+                        To simulate these equations, we use <strong>Euler's method</strong>, a simple and widely-used
+                        numerical scheme. Euler's method approximates the solution by taking small steps along the
+                        curve, updating the population values incrementally:
+                    </p>
+                    <p>
+                        \[
+                        x_{n+1} = x_n + h \cdot f(x_n, y_n)
+                        \]
+                    </p>
+                    <p>
+                        \[
+                        y_{n+1} = y_n + h \cdot g(x_n, y_n)
+                        \]
+                    </p>
+                    <p>Where \(h\) is the step size, and \(f\) and \(g\) are the functions representing the rate of
+                        change for prey and predator populations.</p>
+
+                    <h3>Visualization</h3>
+                    <p>
+                        The results of the simulation are plotted using LaTeX's <code>pgfplots</code> package. This plot
+                        effectively shows the cyclical interaction between the prey and predator populations over time,
+                        reflecting the periodic nature of the Lotka-Volterra model.
+                    </p>
+                </div>
+                <h2>Result</h2>
+                <div align="center">
+                    <iframe src="https://drive.google.com/file/d/1PmVjjWfJZpDSre99Ik_EXD6l_BHJxYeG/preview"
+                        allow="autoplay" align="center"></iframe>
+                </div>
+            </div>
+            <div class="panel-right">
+                <h2>Tex Code</h2>
                 <pre>
                     <code>
-                        \documentclass{standalone}
+\documentclass{standalone}
 \usepackage{filecontents}
 \usepackage{float}
 \usepackage{pgffor}
@@ -96,8 +188,10 @@
 \pgfplotsset{compat=1.17}
 
 % Define the Lotka-Volterra equations in the preamble
-\newcommand{\fx}[2]{\alpha*#1 - \beta*#1*#2} % Prey equation: dx/dt = \alpha*x - \beta*x*y
-\newcommand{\fy}[2]{\delta*#1*#2 - \gamma*#2} % Predator equation: dy/dt = \delta*x*y - \gamma*y
+% Prey equation: dx/dt = \alpha*x - \beta*x*y
+\newcommand{\fx}[2]{\alpha*#1 - \beta*#1*#2} 
+% Predator equation: dy/dt = \delta*x*y - \gamma*y
+\newcommand{\fy}[2]{\delta*#1*#2 - \gamma*#2} 
 
 \newwrite\datfile
 
@@ -159,13 +253,47 @@
                     </code>
                 </pre>
             </div>
+        </div>
+
+    <div class="line-2">
+        <div class="panel">
+            <div class="panel-left">
+                <div class="content">
+                    <h2>Left</h2>
+                    ...
+                </div>
+            </div>
             <div class="panel-right">
-                <h2>Result</h2>
-                <iframe src="https://drive.google.com/file/d/1PmVjjWfJZpDSre99Ik_EXD6l_BHJxYeG/preview" allow="autoplay"></iframe>
+                <div class="content">
+                    <h2>Right</h2>
+                    <div align="center">
+                        ...
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-        <div class="line-1"></div>
+        <div class="line-1">
+        </div>
+        <h2 align="center">SageMath</h2>
+        <div class="line-2"></div>
+
+        <div class="panel">
+            <div class="panel-left">
+                <div class="content">
+                    <h2>Left</h2>
+                    ...
+                </div>
+            </div>
+            <div class="panel-right">
+                <div class="content">
+                    <h2>Right</h2>
+                    <div align="center">
+                        ...
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="button-container">
             <a href="../index.html" class="home-button">Back to Home</a>
         </div>
@@ -173,4 +301,5 @@
             &copy; 2024. All rights reserved.
         </footer>
 </body>
+
 </html>
