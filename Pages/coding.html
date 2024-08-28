@@ -1,147 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Code Display</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        :root {
-            --primary-color: #1a5f7a;
-            --secondary-color: #57837b;
-            --background-color: #f6f6f6;
-            --text-color: #333333;
-            --accent-color: #c38e70;
-            --white: #ffffff;
-        }
-        
-        body {
-            margin: 0;
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.6;
-            padding: 2rem;
-        }
-        
-        .content-container {
-            max-width: 1000px;
-            width: 90%;
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        
-        h1, h2 {
-            color: var(--primary-color);
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            margin-top: 2rem;
-        }
-        
-        .line-1, .line-2 {
-            height: 2px;
-            background: var(--secondary-color);
-            margin: 1rem 0;
-        }
-        
-        .line-1 {
-            height: 3px;
-        }
-        
-        .articles-list {
-            list-style-type: decimal;
-            padding-left: 1.5rem;
-            text-align: left;
-        }
-        
-        .articles-list li {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        
-        .articles-list li a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .articles-list li a:hover {
-            text-decoration: underline;
-        }
-        
-        .button-container {
-            margin-top: 2rem;
-            text-align: center;
-        }
-        
-        .home-button {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .home-button:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        footer {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: var(--secondary-color);
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
-            .content-container {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding - Anes Moulai-Khatir</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    :root {
+        --primary-color: #1a5f7a;
+        --secondary-color: #57837b;
+        --background-color: #f6f6f6;
+        --text-color: #333333;
+        --accent-color: #c38e70;
+        --white: #ffffff;
+    }
 
+    body {
+        margin: 0;
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.6;
+        padding: 2rem;
+    }
+
+    .content-container {
+        max-width: 1000px;
+        width: 90%;
+        background-color: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin: 2rem 0;
+    }
+
+    h1, h2 {
+        color: var(--primary-color);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+    }
+
+    .panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .panel-left {
+        background-color: var(--white);
+        padding: 20px;
+        width: 60%;
+    }
+
+    .panel-right {
+        background-color: var(--white);
+        align:center;
+        padding: 0px;
+    }
+
+    pre {
+        background-color: var(--background-color);
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+
+    code {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        color: var(--text-color);
+    }
+	.line-1, .line-2 {
+        width: 100%; /* Ensure the lines span the full width */
+        background-color: var(--secondary-color); /* Line color */
+    }
+    .line-1 {
+        height: 4px;  /* Line thickness */
+        }
+    .line-2 {
+        height: 2px;  /* Line thickness */
+        }
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem;
+        }
+
+        .content-container {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .panel {
+            flex-direction: column;
+        }
+
+        .panel-left, .panel-right {
+            width: 100%;
+        }
+        
+        
+    }
+</style>
+</head>
 <body>
-    <h2 align="center">LaTeX</h2>
-        <div class="line-2"></div>
-        <div class="panel">
-            <div class="panel-left">
-                <div class="content">
-                    <h2>Simulating the Lotka-Volterra Predator-Prey Model with LaTeX</h2>
+    <h1>Coding Journey</h1>
+	<div class="line-1"></div>
+    <h2>LaTeX</h2>
+	<div class="line-2"></div>
+	<h2>Solving Differential equations</h2>
+    <div>
+    <h2>Simulating the Lotka-Volterra Predator-Prey Model with LaTeX</h2>
                     <p>
                         The Lotka-Volterra model is a fundamental concept in mathematical biology, describing the
                         interaction between predator and prey populations. This model uses two differential equations to
@@ -190,17 +185,11 @@
                         effectively shows the cyclical interaction between the prey and predator populations over time,
                         reflecting the periodic nature of the Lotka-Volterra model.
                     </p>
-                </div>
-                <h2>Result</h2>
-                <div align="center">
-                    <iframe src="https://drive.google.com/file/d/1PmVjjWfJZpDSre99Ik_EXD6l_BHJxYeG/preview"
-                        allow="autoplay" align="center"></iframe>
-                </div>
-            </div>
-            <div class="panel-right">
-                <h2>Tex Code</h2>
-                <pre>
-                    <code>
+                    </div>
+    <div class="panel">
+        <div class="panel-left">
+            <h2>LaTeX Code</h2>
+            <pre><code>
 \documentclass{standalone}
 \usepackage{filecontents}
 \usepackage{float}
@@ -209,10 +198,8 @@
 \pgfplotsset{compat=1.17}
 
 % Define the Lotka-Volterra equations in the preamble
-% Prey equation: dx/dt = \alpha*x - \beta*x*y
-\newcommand{\fx}[2]{\alpha*#1 - \beta*#1*#2} 
-% Predator equation: dy/dt = \delta*x*y - \gamma*y
-\newcommand{\fy}[2]{\delta*#1*#2 - \gamma*#2} 
+\newcommand{\fx}[2]{\alpha*#1 - \beta*#1*#2} % Prey equation: dx/dt = \alpha*x - \beta*x*y
+\newcommand{\fy}[2]{\delta*#1*#2 - \gamma*#2} % Predator equation: dy/dt = \delta*x*y - \gamma*y
 
 \newwrite\datfile
 
@@ -252,75 +239,60 @@
 }
 
 \begin{document}
-    
     % Plotting the prey and predator populations over time
-        \begin{tikzpicture}
-            \begin{axis}[
-                title={Lotka-Volterra Model: Prey and Predator Populations over Time},
-                xlabel={Time ($t$)},
-                ylabel={Population},
-                grid=both,
-                width=12cm,
-                height=8cm,
-                legend pos=north east
-                ]
-                \addplot table [x index=0, y index=1, col sep=space] {dataLV.dat};
-                \addplot table [x index=0, y index=2, col sep=space] {dataLV.dat};
-                \legend{Prey ($x$), Predator ($y$)}
-            \end{axis}
-        \end{tikzpicture}
-    
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Lotka-Volterra Model: Prey and Predator Populations over Time},
+            xlabel={Time ($t$)},
+            ylabel={Population},
+            grid=both,
+            width=12cm,
+            height=8cm,
+            legend pos=north east
+            ]
+            \addplot table [x index=0, y index=1, col sep=space] {dataLV.dat};
+            \addplot table [x index=0, y index=2, col sep=space] {dataLV.dat};
+            \legend{Prey ($x$), Predator ($y$)}
+        \end{axis}
+    \end{tikzpicture}
 \end{document}
-                    </code>
-                </pre>
-            </div>
+            </code></pre>
         </div>
+        <div class="panel-right">
+            <h2>Result</h2>
+            <iframe src="https://drive.google.com/file/d/1PmVjjWfJZpDSre99Ik_EXD6l_BHJxYeG/preview" width="400" height="300" allow="autoplay"></iframe>
+        </div>
+    </div>
+	
+	<div class="line-1"></div>
+    <h2>SageMath</h2>
+	<div class="line-2"></div>
+	...
+	<div class="line-2"></div>
+    <div class="panel">
+        <div class="panel-left">
+            <h2>SageMath Code</h2>
+            <pre><code>
+import numpy as np
+import matplotlib.pyplot as plt
 
-    <div class="line-2">
-        <div class="panel">
-            <div class="panel-left">
-                <div class="content">
-                    <h2>Left</h2>
-                    ...
-                </div>
-            </div>
-            <div class="panel-right">
-                <div class="content">
-                    <h2>Right</h2>
-                    <div align="center">
-                        ...
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="line-1">
-        </div>
-        <h2 align="center">SageMath</h2>
-        <div class="line-2"></div>
+# Define the Lotka-Volterra model
+def lotka_volterra(t, z, params):
+    x, y = z
+    alpha, beta, delta, gamma = params
+    dx_dt = alpha*x - beta*x*y
+    dy_dt = delta*x*y - gamma*y
+    return [dx_dt, dy_dt]
 
-        <div class="panel">
-            <div class="panel-left">
-                <div class="content">
-                    <h2>Left</h2>
-                    ...
-                </div>
-            </div>
-            <div class="panel-right">
-                <div class="content">
-                    <h2>Right</h2>
-                    <div align="center">
-                        ...
-                    </div>
-                </div>
+            </code></pre>
+        </div>
+        <div class="panel-right">
+            <h2>Result</h2>
+            <p>The resulting plot would show the characteristic oscillating behavior of the Lotka-Volterra model, with the prey and predator populations rising and falling out of phase with each other.</p>
+            <div style="width: 400px; height: 300px; align:center;">
+            ...
             </div>
         </div>
-
-        <div class="button-container">
-            <a href="../index.html" class="home-button">Back to Home</a>
-        </div>
-        <footer>
-            &copy; 2024. All rights reserved.
-        </footer>
+    </div>
 </body>
-
 </html>
