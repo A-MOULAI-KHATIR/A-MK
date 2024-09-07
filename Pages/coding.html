@@ -100,6 +100,28 @@
     .line-2 {
         height: 2px;  /* Line thickness */
         }
+
+	.button-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .home-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .home-button:hover {
+            background-color: var(--secondary-color);
+        }
     @media (max-width: 768px) {
         body {
             padding: 1rem;
@@ -294,5 +316,8 @@ def lotka_volterra(t, z, params):
             </div>
         </div>
     </div>
+        <div class="button-container">
+            <a href="../index.html" class="home-button">Back to Home</a>
+        </div>
 </body>
 </html>
